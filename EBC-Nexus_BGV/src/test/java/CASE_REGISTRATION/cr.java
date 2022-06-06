@@ -1,9 +1,16 @@
 package CASE_REGISTRATION;
-public class cr{
+
+import org.testng.annotations.Test;
+
+import COMMON_COMPONENTS.SeleniumMethods;
+
+public class cr extends SeleniumMethods{
 	
-	public static void main(String[] args) {
-		int a =2;
-		int b =3;
-	System.out.println(a+b);
+	
+	@Test
+	public static void b() {
+		int c =2;
+		int d =3;
+	System.out.println(c+d);
 }
 	}

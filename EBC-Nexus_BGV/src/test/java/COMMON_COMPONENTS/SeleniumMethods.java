@@ -130,32 +130,6 @@ public class SeleniumMethods extends ReadAFile
 		driver.get(url);
 	}
 	
-	public void openNewUrl(String url)
-	{
-		((JavascriptExecutor)driver).executeScript("window.open(arguments[1])", url);
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(1));
-		driver.get(url);
-		driver.manage().window().maximize();
-	}
-	
-	public void getCurrentUrl()
-	{
-        String CurrentURL = driver.getCurrentUrl();
-        System.out.println(CurrentURL);
-		//ExtentTestManager.getTest().log(LogStatus.PASS,"Navigated to: " + CurrentURL);
-    }
-	
-	public void navigateUrl()
-	{
-		driver.navigate();
-	}
-	
-	public void refresh()
-	{
-		driver.navigate().refresh();
-	}
-	
 	protected WebElement findElement(By bylocator)
 	{
 		element = driver.findElement(bylocator);
@@ -205,15 +179,15 @@ public class SeleniumMethods extends ReadAFile
 	}
 	
 		
-	public WebElement valueList(By bylocator, String text)
+	public WebElement listvalue (String text)
 	{
-		List<WebElement> inclusionsoptions = findElementByList(bylocator);
+		List<WebElement> inclusionsoptions = driver.findElements(By.xpath("//mat-option/span"));
 		WebElement option = null;
 		for(WebElement e : inclusionsoptions)
 		{
 			if(e.getText().equalsIgnoreCase(text))
 			{
-				option = e;
+				click.option = e;
 			}
 		}
 		return option;
